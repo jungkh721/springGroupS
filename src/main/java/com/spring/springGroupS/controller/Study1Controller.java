@@ -370,8 +370,38 @@ public class Study1Controller {
 		
 		context.close();
 		return "study1/xml/xmlTest3";
+		
 	}
-	
+	@GetMapping("/aop/test5")
+	public String aopTest5Get() {
+		log.info("study1컨트롤러의 test5메소드입니다.");
+		
+		study1Service.getAopServiceTest1();
+		study1Service.getAopServiceTest2();
+		study1Service.getAopServiceTest3();
+		study1Service.getAopServiceTest52();
+		study1Service.getAopServiceTest53();
+		
+		return "study1/aop/aopMenu";
+	}
+	@GetMapping("/xml/xmlTest2")
+	public String xmlTest2Get(Model model) {
+		AbstractApplicationContext context = new GenericXmlApplicationContext("xml/sungjuk.xml");
+		
+		
+		List<SungjukVO> vos = new ArrayList<SungjukVO>();
+		SungjukVO vo = null;
+		for(int i=1; i<=3; i++) {
+			String str = "vo" + i;
+			vo = context.getBean(str, SungjukVO.class);
+			vos.add(vo);
+		}
+		
+		model.addAttribute("vos", vos);
+		
+		context.close();
+		return "study1/xml/xmlTest2";
+	}	
 	
 	
 }
