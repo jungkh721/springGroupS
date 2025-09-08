@@ -115,8 +115,9 @@
 			<artifactId>junit</artifactId>
 			<version>4.7</version>
 			<scope>test</scope>
-		</dependency>
-
+		</dependency>  
+		
+		
 		<!-- lombok라이브러리 -->
 		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 		<dependency>
@@ -167,9 +168,9 @@
 		</dependency>
 		
 		
-		
-		        
+		      
 	</dependencies>
+
     <build>
         <plugins>
             <plugin>
