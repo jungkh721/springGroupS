@@ -13,7 +13,7 @@
   
     let str = '';
     let cnt = 0;
-    
+    //SHA256암호화
     function sha256Check() {
     	let pwd = $("#pwd").val();
     	if(pwd.trim() == "") {
@@ -28,6 +28,46 @@
     		success:function(res) {
     			cnt++;
     			str += cnt + '.sha256 : ' + res + '<br/>';
+    			$("#demo").html(str);
+    		},
+    		error : () => alert("전송오류")
+    	});
+    }
+    //ARIA암호화
+    function ariaCheck() {
+    	let pwd = $("#pwd").val();
+    	if(pwd.trim() == "") {
+    		alert("비밀번호를 입력하세요");
+    		return false;
+    	}
+    	
+    	$.ajax({
+    		url  : "${ctp}/study1/password/aria",
+    		type : "post",
+    		data : {pwd : pwd},
+    		success:function(res) {
+    			cnt++;
+    			str += cnt + '.aria : ' + res + '<br/>';
+    			$("#demo").html(str);
+    		},
+    		error : () => alert("전송오류")
+    	});
+    }
+    //BCryptPasswordEncoder암호화
+    function bcCheck() {
+    	let pwd = $("#pwd").val();
+    	if(pwd.trim() == "") {
+    		alert("비밀번호를 입력하세요");
+    		return false;
+    	}
+    	
+    	$.ajax({
+    		url  : "${ctp}/study1/password/bCryptPassword",
+    		type : "post",
+    		data : {pwd : pwd},
+    		success:function(res) {
+    			cnt++;
+    			str += cnt + '.BCryptPasswordEncoder : ' + res + '<br/>';
     			$("#demo").html(str);
     		},
     		error : () => alert("전송오류")

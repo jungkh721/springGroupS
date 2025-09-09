@@ -25,6 +25,7 @@
     </div>
     <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Login</a>
     <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Join</a>
+    <a href="${ctp}/member/memberJoin" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Join</a>
     <!-- <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a> -->
   </div>
 </div>

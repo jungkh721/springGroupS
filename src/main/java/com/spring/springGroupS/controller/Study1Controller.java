@@ -1,5 +1,7 @@
 package com.spring.springGroupS.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.springGroupS.common.ARIAUtil;
 import com.spring.springGroupS.common.SecurityUtil;
 import com.spring.springGroupS.service.Study1Service;
 import com.spring.springGroupS.service.StudyService;
@@ -43,6 +47,9 @@ public class Study1Controller {
 	
 	@Autowired
 	StudyService studyService;
+	
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
 	
 	// QueryString 방식을 통한 값의 전달
 	
@@ -555,7 +562,7 @@ public class Study1Controller {
 		return "/study1/password/passwordForm";
 	}
 	
-	//sha256암호화(ajax처리)
+	//sha256암호화(ajax처리)SecurityUtil라이브러리(jsp에서 제공)
 	@ResponseBody
 	@PostMapping(value="/password/sha256", produces="application/text; charset=utf8")
 	public String sha256Post(String pwd) {
@@ -563,6 +570,29 @@ public class Study1Controller {
 		SecurityUtil security = new SecurityUtil();
 		String encPwd =security.encryptSHA256(salt+pwd);
 		pwd = "salt :" +salt+"/암호화된 비밀번호"+encPwd;
+		return pwd;
+		
+	}
+	//aria암호화(ajax처리)
+	@ResponseBody
+	@PostMapping(value="/password/aria", produces="application/text; charset=utf8")
+	public String ariaPost(String pwd) throws InvalidKeyException, UnsupportedEncodingException {
+		String salt =UUID.randomUUID().toString().substring(0,8);
+		
+		String encPwd = ARIAUtil.ariaEncrypt(salt+pwd);
+		String decPwd =ARIAUtil.ariaDecrypt(encPwd);
+		
+		pwd = "salt : " + salt + " / 암호화된 비밀번호 " + encPwd + " / 복호화비번 : " + decPwd.substring(8);
+		return pwd;
+		
+	}
+	//BCryptPasswordEncoder암호화(ajax처리)
+	@ResponseBody
+	@PostMapping(value="/password/bCryptPassword", produces="application/text; charset=utf8")
+	public String bCryptPasswordPost(String pwd) throws InvalidKeyException, UnsupportedEncodingException {
+		String encPwd =passwordEncoder.encode(pwd);
+		
+		pwd =" / 암호화된 비밀번호 " + encPwd ;
 		return pwd;
 		
 	}

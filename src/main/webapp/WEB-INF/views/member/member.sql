@@ -27,3 +27,5 @@ create table member (
   primary key (idx),
   unique(mid)
 );
+
+desc member;
