@@ -10,7 +10,7 @@ import com.spring.springGroupS.vo.GuestVO;
 
 @Service
 public class GuestServiceImpl implements GuestService {
-	
+
 	@Autowired
 	GuestDAO guestDAO;
 
@@ -21,17 +21,17 @@ public class GuestServiceImpl implements GuestService {
 
 	@Override
 	public int setGuestInput(GuestVO vo) {
-		return  guestDAO.setGuestInput(vo);
+		return guestDAO.setGuestInput(vo);
 	}
 
 	@Override
 	public int getTotRecCnt() {
-		return  guestDAO.getTotRecCnt();
+		return guestDAO.getTotRecCnt();
 	}
 
 	@Override
 	public int setGuestDelete(int idx) {
 		return guestDAO.setGuestDelete(idx);
 	}
-
+	
 }

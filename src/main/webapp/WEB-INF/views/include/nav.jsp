@@ -18,7 +18,9 @@
         <a href="${ctp}/study1/xml/xmlMenu" class="w3-bar-item w3-button">XML 값주입 Test</a>
         <a href="${ctp}/user/userList" class="w3-bar-item w3-button">User List</a>
         <a href="${ctp}/user2/userList" class="w3-bar-item w3-button">User2 List</a>
-        <a href="#" class="w3-bar-item w3-button">Ajax Test</a>
+        <a href="${ctp}/study1/restApi/restApiForm" class="w3-bar-item w3-button">Rest API</a>
+        <a href="${ctp}/study1/ajax/ajaxForm" class="w3-bar-item w3-button">Ajax Test</a>
+        <a href="${ctp}/study1/password/passwordForm" class="w3-bar-item w3-button">암호화 연습</a>
       </div>
     </div>
     <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Login</a>

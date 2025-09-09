@@ -11,5 +11,4 @@ public class GuestVO {
 	private String homePage;
 	private String vDate;
 	private String hostIp;
-
 }

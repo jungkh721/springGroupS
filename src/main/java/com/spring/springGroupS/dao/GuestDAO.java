@@ -8,12 +8,12 @@ import com.spring.springGroupS.vo.GuestVO;
 
 public interface GuestDAO {
 
-	List<GuestVO> getGuestList(@Param("startIndexNo") int startIndexNo,@Param("pageSize") int pageSize);
+	List<GuestVO> getGuestList(@Param("startIndexNo") int startIndexNo, @Param("pageSize") int pageSize);
 
 	int setGuestInput(@Param("vo") GuestVO vo);
 
 	int getTotRecCnt();
 
-	int setGuestDelete(@Param("idx")int idx);
+	int setGuestDelete(@Param("idx") int idx);
 
 }
