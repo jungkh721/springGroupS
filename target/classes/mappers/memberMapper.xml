@@ -9,5 +9,14 @@
 	<select id="getMemberNickCheck" resultType="com.spring.springGroupS.vo.MemberVO">
 		select * from member where nickName = #{nickName};
 	</select>
+	
+	
+	
+	
+	
+	<insert id="setMemberJoin">
+	  insert into member values 
+	    (default,#{vo.mid},#{vo.pwd},#{vo.nickName},#{vo.name},#{vo.gender},#{vo.birthday},#{vo.tel},#{vo.address},#{vo.email},#{vo.homePage},#{vo.job},#{vo.hobby},#{vo.photo},#{vo.content},#{vo.userInfor},default,default,default,default,default,default,default);
+	</insert>
 
 </mapper>

@@ -16,4 +16,7 @@ public interface GuestDAO {
 
 	int setGuestDelete(@Param("idx") int idx);
 
+	int getMemberSearch(@Param("mid")String mid,@Param("nickName") String nickName,@Param("name") String name);
+
+
 }

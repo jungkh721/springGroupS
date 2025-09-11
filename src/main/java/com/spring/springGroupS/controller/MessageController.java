@@ -98,16 +98,32 @@ public class MessageController {
 			model.addAttribute("url", "/member/memberLogin");
 		}
 		else if(msgFlag.equals("mailSendOk")) {
-			model.addAttribute("message", "메일이 전송되었습니다");
+			model.addAttribute("message", "메일이 전송되었습니다.");
 			model.addAttribute("url", "/study1/mail/mailForm");
 		}
 		else if(msgFlag.equals("fileUploadOk")) {
-			model.addAttribute("message", "파일이 업로드되었습니다");
+			model.addAttribute("message", "파일이 업로드 되었습니다.");
 			model.addAttribute("url", "/study1/fileUpload/fileUploadForm");
 		}
 		else if(msgFlag.equals("fileUploadNo")) {
-			model.addAttribute("message", "파일이 업로드 실패");
+			model.addAttribute("message", "파일 업로드 실패~~");
 			model.addAttribute("url", "/study1/fileUpload/fileUploadForm");
+		}
+		else if(msgFlag.equals("idCheckNo")) {
+			model.addAttribute("message", "이미 사용중인 아이디가 있습니다.\\n아이디를 확인후 다시 회원가입하세요.");
+			model.addAttribute("url", "/member/memberJoin");
+		}
+		else if(msgFlag.equals("nickNameCheckNo")) {
+			model.addAttribute("message", "이미 사용중인 닉네임이 있습니다.\\n닉네임을 확인후 다시 회원가입하세요.");
+			model.addAttribute("url", "/member/memberJoin");
+		}
+		else if(msgFlag.equals("memberJoinOk")) {
+			model.addAttribute("message", "회원에 가입되셨습니다.");
+			model.addAttribute("url", "/member/memberLogin");
+		}
+		else if(msgFlag.equals("memberJoinNo")) {
+			model.addAttribute("message", "회원 가입 실패~~");
+			model.addAttribute("url", "/member/memberJoin");
 		}
 
 		

@@ -8,4 +8,6 @@ public interface MemberService {
 
 	MemberVO getMemberNickCheck(String nickName);
 
+	int setMemberJoin(MemberVO vo);
+
 }

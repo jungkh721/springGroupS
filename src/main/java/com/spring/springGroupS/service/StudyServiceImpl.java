@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.springGroupS.dao.StudyDAO;
+import com.spring.springGroupS.vo.MemberVO;
 import com.spring.springGroupS.vo.UserVO;
 
 @Service
@@ -148,31 +150,31 @@ public class StudyServiceImpl implements StudyService {
 	public ArrayList<UserVO> getUserListSearch(String mid) {
 		return studyDAO.getUserListSearch(mid);
 	}
-	//파일업로드
+
 	@Override
 	public int setFileUpload(MultipartFile fName, String mid) {
-		int res=0;
+		int res = 0;
 		
-		//파일중복처리
+		// 파일명 중복처리
 		String oFileName = fName.getOriginalFilename();
-		String sFileName =mid + "" + UUID.randomUUID().toString().substring(0,4)+""+oFileName;
+		String sFileName = mid + "_" + UUID.randomUUID().toString().substring(0, 4) + "_" + oFileName;
 		
 		try {
 			writeFile(fName, sFileName);
-			res=1;
+			res = 1;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
 		return res;
 	}
-	//파일 서버에 업로드 시키는 메소드
+
+	// 파일 서버에 업로드 시키는 메소드
 	private void writeFile(MultipartFile fName, String sFileName) throws IOException {
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-		String realPath =request.getSession().getServletContext().getRealPath("/resources/data/fileUpload/");
+		String realPath = request.getSession().getServletContext().getRealPath("/resources/data/fileUpload/");
 		
 		FileOutputStream fos = new FileOutputStream(realPath + sFileName);
-		
 		
 		if(fName.getBytes().length != -1) {
 			fos.write(fName.getBytes());
@@ -181,5 +183,11 @@ public class StudyServiceImpl implements StudyService {
 		fos.close();
 	}
 
+	@Override
+	public List<MemberVO> getMemberList() {
+		return studyDAO.getMemberList();
+	}
+	
+	
 	
 }

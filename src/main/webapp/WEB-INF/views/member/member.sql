@@ -28,4 +28,26 @@ create table member (
   unique(mid)
 );
 
+drop table member;
+
+insert into member (mid,pwd,nickName,name,email) values ('1','1','n1','a1','e1');
+insert into member (mid,pwd,nickName,name,email) values ('2','1','n2','a2','e2');
+insert into member (mid,pwd,nickName,name,email) values ('3','1','n3','a3','e3');
+insert into member (mid,pwd,nickName,name,email) values ('4','1','n4','a4','e4');
+insert into member (mid,pwd,nickName,name,email) values ('5','1','n5','a5','e5');
+insert into member (mid,pwd,nickName,name,email) values ('6','1','n6','a6','e6');
+insert into member (mid,pwd,nickName,name,email) values ('7','1','n7','a7','e7');
+insert into member (mid,pwd,nickName,name,email) values ('8','1','n8','a8','e8');
+insert into member (mid,pwd,nickName,name,email) values ('9','1','n9','a9','e9');
+insert into member (mid,pwd,nickName,name,email) values ('10','1','n10','a10','e10');
+insert into member (mid,pwd,nickName,name,email) values ('11','1','n11','a11','e11');
+insert into member (mid,pwd,nickName,name,email) values ('12','1','n12','a12','e12');
+insert into member (mid,pwd,nickName,name,email) values ('13','1','n13','a13','e13');
+insert into member (mid,pwd,nickName,name,email) values ('14','1','n14','a14','e14');
+insert into member (mid,pwd,nickName,name,email) values ('15','1','n15','a15','e15');
+insert into member (mid,pwd,nickName,name,email) values ('16','1','n16','a16','e16')
+
+select * from member;
+
+
 desc member;

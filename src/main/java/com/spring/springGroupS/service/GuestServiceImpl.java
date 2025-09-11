@@ -33,5 +33,10 @@ public class GuestServiceImpl implements GuestService {
 	public int setGuestDelete(int idx) {
 		return guestDAO.setGuestDelete(idx);
 	}
+
+	@Override
+	public int getMemberSearch(String mid, String nickName, String name) {
+		return guestDAO.getMemberSearch( mid,  nickName,  name);
+	}
 	
 }

@@ -15,14 +15,19 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberVO getMemberIdCheck(String mid) {
 //		MemberVO vo = memberDAO.getMemberIdCheck(mid);
-//		System.out.println("vo :"+vo);
+//		System.out.println("vo : " + vo);
 //		return vo;
-		return memberDAO.getMemberIdCheck( mid);
+		return memberDAO.getMemberIdCheck(mid);
 	}
 
 	@Override
 	public MemberVO getMemberNickCheck(String nickName) {
 		return memberDAO.getMemberNickCheck(nickName);
+	}
+
+	@Override
+	public int setMemberJoin(MemberVO vo) {
+		return memberDAO.setMemberJoin(vo);
 	}
 	
 }
