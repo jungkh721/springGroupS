@@ -14,21 +14,26 @@
 <jsp:include page="/WEB-INF/views/include/slide2.jsp" />
 <p><br/></p>
 <div class="container">
-  <h2>회원 전용방</h2>
+  <h2>${sNickName}회원 전용방</h2>
   <hr/>
-  <div class="row">
+  <c:if test="${sLevel == 3}">
+  	정회원 등업 조건: 방명록에 3회 이상글쓰기, 회원 로그인 3일 이상(숙제..........)
+  </c:if>
+  <hr/>
+  <div class="row">	
   <div class="col">
     현재 회원 등급 : ${strLevel}<br/>
     총 방문횟수 : ${mVo.visitCnt}<br/>
     오늘 방문횟수 : ${mVo.todayCnt}<br/>
     현재 가용 포인트 : ${mVo.point}<br/>
-    최종 방문일 : ${mVo.lastDate}<br/>
+    최종 방문일 : ${sLastDate}<br/>
   </div>
   <div class="col">
     <img src="${ctp}/member/${mVo.photo}" width="200px"/>
   </div>
   </div>
   <hr/>
+  <h4>활동내역</h4>
 	<div>
 	  방명록 올린 글수 : ${guestCnt}<br/>
 	</div>  

@@ -10,4 +10,8 @@ public interface MemberService {
 
 	int setMemberJoin(MemberVO vo);
 
+	void setLastDateUpdate(String mid);
+
+	int setMemberPwdChange(String mid, String pwd);
+
 }

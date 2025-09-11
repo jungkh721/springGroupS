@@ -18,5 +18,18 @@
 	  insert into member values 
 	    (default,#{vo.mid},#{vo.pwd},#{vo.nickName},#{vo.name},#{vo.gender},#{vo.birthday},#{vo.tel},#{vo.address},#{vo.email},#{vo.homePage},#{vo.job},#{vo.hobby},#{vo.photo},#{vo.content},#{vo.userInfor},default,default,default,default,default,default,default);
 	</insert>
+	
+	
+	
+	
+	
+	<update id="setLastDateUpdate">
+	  update member set lastdate = now() where mid = #{mid};
+	</update>
+	
+	<update id="setMemberPwdChange">
+	  update member set pwd = #{pwd} where mid = #{mid};
+	</update>
+	
 
 </mapper>

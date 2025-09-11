@@ -29,5 +29,16 @@ public class MemberServiceImpl implements MemberService {
 	public int setMemberJoin(MemberVO vo) {
 		return memberDAO.setMemberJoin(vo);
 	}
+
+	@Override
+	public void setLastDateUpdate(String mid) {
+		memberDAO.setLastDateUpdate(mid);
+	}
+
+	@Override
+	public int setMemberPwdChange(String mid, String pwd) {
+		return memberDAO.setMemberPwdChange(mid, pwd);
+	}
+
 	
 }

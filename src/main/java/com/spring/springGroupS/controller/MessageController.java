@@ -1,5 +1,7 @@
 package com.spring.springGroupS.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MessageController {
 
 	@RequestMapping(value = "/message/{msgFlag}", method = RequestMethod.GET)
-	public String getMessage(Model model,
+	public String getMessage(Model model, HttpSession session,
 			@PathVariable String msgFlag,
 			@RequestParam(name="mid", defaultValue = "", required = false) String mid,
 			@RequestParam(name="idx", defaultValue = "", required = false) String idx
@@ -124,6 +126,23 @@ public class MessageController {
 		else if(msgFlag.equals("memberJoinNo")) {
 			model.addAttribute("message", "회원 가입 실패~~");
 			model.addAttribute("url", "/member/memberJoin");
+		}
+		else if(msgFlag.equals("loginError")) {
+			model.addAttribute("message", "로그인후 사용하세요.");
+			model.addAttribute("url", "/member/memberLogin");
+		}
+		else if(msgFlag.equals("levelNo")) {
+			model.addAttribute("message", "회원 등급을 확인하세요.");
+			model.addAttribute("url", "/member/memberMain");
+		}
+		else if(msgFlag.equals("passwordChangeOk")) {
+			session.invalidate();
+			model.addAttribute("message", "비밀번호를 변경했습니다. 다시 로그인후 사용하세요.");
+			model.addAttribute("url", "/member/memberLogin");
+		}
+		else if(msgFlag.equals("passwordChangeNo")) {
+			model.addAttribute("message", "비밀번호 변경 실패~~");
+			model.addAttribute("url", "/member/memberPwdCheck");
 		}
 
 		
